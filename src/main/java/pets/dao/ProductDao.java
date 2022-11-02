@@ -39,4 +39,61 @@ public class ProductDao {
 		
 		return products;
 	}
+	
+	public List<Cart> getCartProducts(ArrayList<Cart> cartList){
+		List<Cart> products = new ArrayList<Cart>();
+	
+		try {
+			if(cartList.size() > 0)  {
+				for(Cart item:cartList) {
+					query = "select * from products where product_id=?";
+					pst = this.con.prepareStatement(query);
+					pst.setInt(1, item.getId());
+					rs = pst.executeQuery();
+					while(rs.next()) {
+						Cart row = new Cart();
+						row.setId(rs.getInt("product_id"));
+						row.setTitle(rs.getString("product_title"));
+						row.setPrice(rs.getDouble("product_price"));
+						row.setQuantity(item.getQuantity());
+						products.add(row);
+					}
+				}
+			}
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return products;
+	
+	}
+	
+	
+	public double getTotalPrice(ArrayList<Cart> cartList) {
+		double sum = 0;
+		
+		try {
+			if(cartList.size() > 0) {
+				for(Cart item:cartList) {
+					query = "select product_price from products where product_id=?";
+					pst = this.con.prepareStatement(query);
+					pst.setInt(1, item.getId());
+					rs = pst.executeQuery();
+					
+					while(rs.next()) {
+						sum = sum + (rs.getDouble("product_price") * item.getQuantity());
+					}
+				}
+			}
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return sum;
+	}
 }
+
+
