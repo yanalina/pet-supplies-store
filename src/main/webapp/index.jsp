@@ -8,6 +8,13 @@
 <%
 ProductDao pd = new ProductDao(DbCon.getConnection());
 List<Product> products = pd.getAllProducts();
+
+@SuppressWarnings("unchecked")
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+
+if (cart_list != null) {
+	request.setAttribute("cart_list", cart_list);
+}
 %>
     
 <!DOCTYPE html>
@@ -21,8 +28,40 @@ List<Product> products = pd.getAllProducts();
 <link href="css/responsive.css?v=2.0" rel="stylesheet" type="text/css" />
 <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	
+<!-- Links for Navbar -->
+
+<link rel="stylesheet" href="NavStyle.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">	
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+</script>
 </head>
 <body>
+	
+	<!-- Nav bar -->
+	<nav class="navbar navbar-expand-sm bg-light">
+
+		<a class="navbar-brand" href="#"> <img
+			src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30"
+			height="30" alt="">
+		</a>
+
+
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="nav-link" href="index.jsp">
+					Home </a></li>
+			<li class="nav-item"><a class="nav-link" href="cart.jsp">
+					Cart<span class="badge badge-danger"> ${cart_list.size()}</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" href=""> Login </a></li>
+
+			<li class="nav-item"><a class="nav-link" href=""> Account </a></li>
+		</ul>
+	</nav>
 	
 	<!-- Text at the Top of the Page -->
 	
@@ -117,7 +156,7 @@ List<Product> products = pd.getAllProducts();
 								<h3 class="price">Price: $<%=p.getPrice() %></h3>
 							</div>
 							<div class="mt-auto d-flex justify-content-between">
-								<a class="btn btn-dark" href="add-to-cart?id=<%=p.getId()%>">Add to Cart</a>
+								<a class="btn btn-dark" href="add-to-cart?product_id=<%=p.getId()%>">Add to Cart</a>
 							</div>
 							
             </div>
@@ -144,7 +183,7 @@ List<Product> products = pd.getAllProducts();
       <div>
         <a href="javascript: history.back()" class="btn btn-light"> &laquo; Go back</a>
       </div>
-      <nav class="ms-3">
+      <div class="ms-3">
         <ul class="pagination">
           <li class="page-item"><a class="page-link" href="#">1</a></li>
           <li class="page-item active" aria-current="page">
@@ -155,7 +194,7 @@ List<Product> products = pd.getAllProducts();
             <a class="page-link" href="#">Next</a>
           </li>
         </ul>
-      </nav>
+      </div>
     </footer>
     
     <!-- ========= END Pagination ========= -->
