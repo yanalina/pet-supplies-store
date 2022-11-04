@@ -16,6 +16,14 @@ if (cart_list != null) {
 	request.setAttribute("cart_list", cart_list);
 }
 %>
+
+<% User user = (User) request.getSession().getAttribute("logUser");
+	if(user != null){
+		request.setAttribute("logUser", user);
+	}
+
+%>
+
     
 <!DOCTYPE html>
 <html>
@@ -57,9 +65,15 @@ if (cart_list != null) {
 			<li class="nav-item"><a class="nav-link" href="cart.jsp">
 					Cart<span class="badge badge-danger"> ${cart_list.size()}</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href=""> Login </a></li>
+			<%if (user != null){%>
+				
+				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet">Logout</a></li>
 
-			<li class="nav-item"><a class="nav-link" href=""> Account </a></li>
+				<li class="nav-item"><a class="nav-link" href="account.jsp"> Account </a></li>
+
+			<% }else{ %>
+				<li class="nav-item"><a class="nav-link" href="login.jsp"> Login </a></li>
+			<%} %>
 		</ul>
 	</nav>
 	
