@@ -112,10 +112,10 @@ if (cart_list != null) {
     	<div class="collapse show" id="collapse_aside1">
       		<div class="card-body">
         		<ul class="list-unstyled">
-          			<li><a href="#">Food</a></li>
-          			<li><a href="#">Toys</a></li>
-          			<li><a href="#">Grooming</a></li>
-          			<li><a href="#">Treatment</a></li>
+          			<li><a href="#"><img src="banner-imgs/Food.jpg"></a></li>
+          			<li><a href="#"><img src="banner-imgs/Toys.jpg"></a></li>
+          			<li><a href="#"><img src="banner-imgs/grooming.jpg"></a></li>
+          			<li><a href="#"><img src="banner-imgs/treatment.jpg"></a></li>
         		</ul>
       		</div>
     	</div> 
@@ -129,8 +129,8 @@ if (cart_list != null) {
     	<div class="collapse show" id="collapse_aside1">
       		<div class="card-body">
         	<ul class="list-unstyled">
-          		<li><a href="#">Cat Food</a></li>
-          		<li><a href="#">Cat Toys</a></li>
+          		<li><a href="#"><img src="banner-imgs/Cat Food.jpg"></a></li>
+          		<li><a href="#"><img src="banner-imgs/Cat Toys.jpg"></a></li>
           		<li><a href="#">Cat Grooming</a></li>
           		<li><a href="#">Cat Treatment</a></li>
         	</ul>
