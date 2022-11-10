@@ -1,20 +1,38 @@
 <%@page import="pets.connection.DbCon"%>
-<%@page import="pets.dao.ProductDao"%>
+<%@page import="pets.dao.*"%>
 <%@page import="pets.model.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
 <%
-ProductDao pd = new ProductDao(DbCon.getConnection());
-List<Product> products = pd.getAllProducts();
-
-@SuppressWarnings("unchecked")
-ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
-
-if (cart_list != null) {
-	request.setAttribute("cart_list", cart_list);
-}
+	String cat = request.getParameter("category");
+	String subcat = request.getParameter("subcategory");
+	
+	ProductDao pd = new ProductDao(DbCon.getConnection());
+	List<Product> products = null;
+	
+	if (cat != null && !cat.trim().equals("all")) {
+		int categoryId = Integer.parseInt(cat.trim());
+		products = pd.getAllProductsById(categoryId);
+	} else if (subcat != null) {
+		int subcategoryId = Integer.parseInt(subcat.trim());
+		products = pd.getAllProductsByIdSub(subcategoryId);
+	} else {
+		products = pd.getAllProducts();
+	}
+	
+	CategoryDao cd = new CategoryDao(DbCon.getConnection());
+	SubcategoryDao sd = new SubcategoryDao(DbCon.getConnection());
+	List<Category> categories = cd.getAllCategories();
+	List<Subcategory> subcategories = sd.getAllSubcategories();
+	
+	@SuppressWarnings("unchecked")
+	ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+	
+	if (cart_list != null) {
+		request.setAttribute("cart_list", cart_list);
+	}
 %>
 
 <% User user = (User) request.getSession().getAttribute("logUser");
@@ -101,44 +119,59 @@ if (cart_list != null) {
 
 	<!-- ===== Card for the Sidebar Filter ===== -->
 	
-	<div id="aside_filter" class="collapse card d-lg-block mb-5">
+	<div class="card d-lg-block mb-5">
 
-  		<article class="filter-group">
+  		
+  		
     		<header class="card-header">
-      			<a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
-        		All Categories <span class="material-symbols-outlined">expand_more</span>
-      			</a>
+      			<h5>CATEGORIES</h5>
     		</header>
-    	<div class="collapse show" id="collapse_aside1">
-      		<div class="card-body">
-        		<ul class="list-unstyled">
-          			<li><a href="#"><img src="banner-imgs/Food.jpg"></a></li>
-          			<li><a href="#"><img src="banner-imgs/Toys.jpg"></a></li>
-          			<li><a href="#"><img src="banner-imgs/grooming.jpg"></a></li>
-          			<li><a href="#"><img src="banner-imgs/treatment.jpg"></a></li>
-        		</ul>
-      		</div>
-    	</div> 
+	    	
+	      		<div class="card-body">
+	        		<ul class="list-unstyled">
+	        		
+	          			<li><a href="index.jsp?category=all"><img src="banner-imgs/All products.jpg"></a></li>
+	          			
+	          			<%
+							for (Category c : categories) {
+						%>
+	          		
+	          			<li><a href="index.jsp?category=<%= c.getCategoryId() %>"><img src="banner-imgs/<%= c.getCategoryBanner() %>"></a></li>
+	          			
+	          			<%
+							}
+						%>
+	          			
+	        		</ul>
+	      		</div>
+	    	 
     
     
-    	<header class="card-header">
-      		<a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
-        		All Sub Categories
-      		</a>
-    	</header>
-    	<div class="collapse show" id="collapse_aside1">
-      		<div class="card-body">
-        	<ul class="list-unstyled">
-          		<li><a href="#"><img src="banner-imgs/Cat Food.jpg"></a></li>
-          		<li><a href="#"><img src="banner-imgs/Cat Toys.jpg"></a></li>
-          		<li><a href="#">Cat Grooming</a></li>
-          		<li><a href="#">Cat Treatment</a></li>
-        	</ul>
-      		</div>
-    	</div>
-  		</article>
- 	</div>
- 	</aside>
+	    	<header class="card-header">
+	      		<h5>SUBCATEGORIES</h5>
+	    	</header>
+	    	
+	      		<div class="card-body">
+	        	<ul class="list-unstyled">
+	          		
+	          		<%
+						for (Subcategory s : subcategories) {
+					%>
+	          		
+	          		<li><a href="index.jsp?subcategory=<%= s.getSubcategoryId() %>"><img src="banner-imgs/<%= s.getSubcategoryBanner() %>"></a></li>
+	          			
+	          		<%
+						}
+					%>
+	          		
+	        	</ul>
+	      		
+	    	</div>
+	    	
+    	
+    
+ 		</div>
+ 		</aside>
  
  	<!-- ===== END Card for the Sidebar Filter ===== -->
 
@@ -146,42 +179,49 @@ if (cart_list != null) {
 
 	<!-- ========= List of Products ========= -->
 	
-	<main class="col-lg-9">
-    <div class="row ">
+		<main class="col-lg-9">
+    	<div class="row ">
     
     		<%
-			if (!products.isEmpty()) {
-				for (Product p : products) {
+    			if (!products.isEmpty()) {
+					for (Product p : products) {
 			%>
     
-        <div class="col-lg-4 col-md-6 col-sm-6 d-flex align-items-stretch">
+        	<div class="col-lg-4 col-md-6 col-sm-6 d-flex align-items-stretch">
         	
-          <figure class="card w-100">
-            <img class="img-wrap" src="product-images/<%=p.getImage() %>" alt="Product Image">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title"><%=p.getTitle() %></h5>
-							<div class="pt-2">
-								<span class="tag"><%=p.getSubcategory() %></span>
-							</div>
-							<div class="pt-3">
-								<p class="card-text"><%=p.getDescription() %></p>
-							</div>
-							<div class="pt-2">
-								<h3 class="price">Price: $<%=p.getPrice() %></h3>
-							</div>
-							<div class="mt-auto d-flex justify-content-between">
-								<a class="btn btn-dark" href="add-to-cart?product_id=<%=p.getId()%>">Add to Cart</a>
-							</div>
+          		<figure class="card w-100">
+          		
+            		<img class="img-wrap" src="product-images/<%=p.getImage() %>" alt="Product Image">
+            		
+            		<div class="card-body d-flex flex-column">
+            		
+              			<h5 class="card-title"><%=p.getTitle() %></h5>
+              			
+						<div class="pt-2">
+							<span class="tag"><%=p.getSubcategory() %></span>
+						</div>
 							
-            </div>
-          </figure>
-        </div>
+						<div class="pt-3">
+							<p class="card-text"><%=p.getDescription() %></p>
+						</div>
+							
+						<div class="pt-2">
+							<h3 class="price">Price: $<%=p.getPrice() %></h3>
+						</div>
+							
+						<div class="mt-auto d-flex justify-content-between">
+							<a class="btn btn-dark" href="add-to-cart?product_id=<%=p.getId()%>">Add to Cart</a>
+						</div>
+							
+            		</div>
+          		</figure>
+        	</div>
         
         	<%
-			}
-			} else {
-			out.println("There is no products");
-			}
+					}
+				} else {
+				out.println("No items were found.");
+				}
 			%>
         
     </div>
