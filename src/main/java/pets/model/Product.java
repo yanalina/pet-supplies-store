@@ -8,11 +8,13 @@ public class Product {
 	private double price;
 	private String category;
 	private String subcategory;
+	private int categoryId;
+	private int subcategoryId;
 	
 	public Product() {
 	}
 
-	public Product(int id, String title, String description, String image, double price, String category, String subcategory) {
+	public Product(int id, String title, String description, String image, double price, String category, String subcategory, int categoryId, int subcategoryId) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -20,6 +22,8 @@ public class Product {
 		this.price = price;
 		this.category = category;
 		this.subcategory = subcategory;
+		this.categoryId = categoryId;
+		this.subcategoryId = subcategoryId;
 	}
 
 	public int getId() {
@@ -78,6 +82,22 @@ public class Product {
 		this.subcategory = subcategory;
 	}
 
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+	public int getSubcategoryId() {
+		return subcategoryId;
+	}
+
+	public void setSubcategoryId(int subcategoryId) {
+		this.subcategoryId = subcategoryId;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", image=" + image
