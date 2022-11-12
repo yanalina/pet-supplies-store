@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blank Template</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href=""><img>logo</a>
+                <input type="text" placeholder="search bar">
+            </nav>
+        </header>
+        <div>
+            <img class="headerPic" src="3.jpg" alt="cat & dog">
+        <h1>
+            You love them, we love helping.
+        </h1>
+        </div>
+        <h2>Featured Items</h2>
+        <div>
+            <section class="featured" >
+                <img src="sectionimage.jpg">
+                <ul>
+                    <li>Lorem ipsum</li>
+                    <li>dolor sit amet, consectetur adipiscing elit.</li>
+                    <li><a href="">Add to Cart</a></li>
+                </ul>
+            </section>
+            <section class="featured">
+                <img src="sectionimage.jpg">
+                <ul>
+                    <li>Lorem ipsum</li>
+                    <li>dolor sit amet, consectetur adipiscing elit.</li>
+                    <li><a href="">Add to Cart</a></li>
+                </ul>
+            </section>
+            <section class="featured">
+                <img src="sectionimage.jpg">
+                <ul>
+                    <li>Lorem ipsum</li>
+                    <li>dolor sit amet, consectetur adipiscing elit.</li>
+                    <li><a href="">Add to Cart</a></li>
+                </ul>
+            </section>
+        </div>
+        <main>
+            <div>
+                <section class="filter">
+                    <h4>FILTER</h4>
+                    <ul>
+                        <li><a href="">Pet Food</a></li>
+                        <li><a href="">Toys</a></li>
+                        <li><a href="">Grooming</a></li>
+                        <li><a href="">Treatment</a></li>
+                    </ul>
+                    <span><a href="">Sort By</a></span>
+                </section>
+            </div>
+            <div>
 
+                <section class="subFeatured">
+                    <img src="sectionimage.jpg">
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>dolor sit amet, consectetur adipiscing elit.</li>
+                        <li><a href="">Add to Cart</a></li>
+                    </ul>
+                </section>
+                <section class="subFeatured">
+                    <img src="sectionimage.jpg">
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>dolor sit amet, consectetur adipiscing elit.</li>
+                        <li><a href="">Add to Cart</a></li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+        <div>
+            <section class="subMain">
+                    <img src="sectionimage.jpg">
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>dolor sit amet, consectetur adipiscing elit.</li>
+                        <li><a href="">Add to Cart</a></li>
+                    </ul>
+                </section>
+                <section class="subMain">
+                    <img src="sectionimage.jpg">
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>dolor sit amet, consectetur adipiscing elit.</li>
+                        <li><a href="">Add to Cart</a></li>
+                    </ul>
+                </section>
+               <section class="subMain">
+                    <img src="sectionimage.jpg">
+                    <ul>
+                        <li>Lorem ipsum</li>
+                        <li>dolor sit amet, consectetur adipiscing elit.</li>
+                        <li><a href="">Add to Cart</a></li>
+                    </ul>
+                </section>
+        </div>
+        
+
+        <footer></footer>
+    </body>
