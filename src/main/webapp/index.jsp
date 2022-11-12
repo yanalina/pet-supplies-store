@@ -110,7 +110,7 @@
 	<!-- ============== Main Page Content ============== -->
 	
 	<section class="padding-y">
-		<div class="container">
+		<div class="container-fluid">
 
 		<div class="row">
 		<aside class="col-lg-3">
@@ -126,39 +126,39 @@
     		<header class="card-header">
       			<h5>CATEGORIES</h5>
     		</header>
-	    	
-	      		<div class="card-body">
-	        		<ul class="list-unstyled">
+    			
+	      			<div class="card-body">
+	        			<ul class="list-unstyled">
 	        		
-	          			<li><a href="index.jsp?category=all"><img src="banner-imgs/All products.jpg"></a></li>
+	          				<li><a href="index.jsp?category=all"><img src="banner-imgs/All products.jpg" class="img-fluid"></a></li>
 	          			
-	          			<%
+	          				<%
 							for (Category c : categories) {
-						%>
+							%>
 	          		
-	          			<li><a href="index.jsp?category=<%= c.getCategoryId() %>"><img src="banner-imgs/<%= c.getCategoryBanner() %>"></a></li>
+	          				<li><a href="index.jsp?category=<%= c.getCategoryId() %>"><img src="banner-imgs/<%= c.getCategoryBanner() %>" class="img-fluid"></a></li>
 	          			
-	          			<%
+	          				<%
 							}
-						%>
+							%>
 	          			
-	        		</ul>
-	      		</div>
-	    	 
+	        			</ul>
+	      			</div>
+	      
     
     
-	    	<header class="card-header">
+	    	<header class="card-header d-none d-lg-block d-xl-block">
 	      		<h5>SUBCATEGORIES</h5>
 	    	</header>
 	    	
-	      		<div class="card-body">
-	        	<ul class="list-unstyled">
+	      		<div class="card-body d-none d-lg-block d-xl-block">
+	        	<ul class="list-unstyled d-none d-lg-block d-xl-block">
 	          		
 	          		<%
 						for (Subcategory s : subcategories) {
 					%>
 	          		
-	          		<li><a href="index.jsp?subcategory=<%= s.getSubcategoryId() %>"><img src="banner-imgs/<%= s.getSubcategoryBanner() %>"></a></li>
+	          		<li><a href="index.jsp?subcategory=<%= s.getSubcategoryId() %>"><img src="banner-imgs/<%= s.getSubcategoryBanner() %>" class="img-fluid"></a></li>
 	          			
 	          		<%
 						}
@@ -166,11 +166,11 @@
 	          		
 	        	</ul>
 	      		
-	    	</div>
-	    	
+	    	    </div>
+	 </div>
     	
     
- 		</div>
+ 		
  		</aside>
  
  	<!-- ===== END Card for the Sidebar Filter ===== -->
