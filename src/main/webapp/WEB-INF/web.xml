@@ -69,4 +69,34 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ForgotPasswordServlet</display-name>
+    <servlet-name>ForgotPasswordServlet</servlet-name>
+    <servlet-class>pets.servlet.ForgotPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPasswordServlet</servlet-name>
+    <url-pattern>/ForgotPasswordServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValidateOtpServlet</display-name>
+    <servlet-name>ValidateOtpServlet</servlet-name>
+    <servlet-class>pets.servlet.ValidateOtpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateOtpServlet</servlet-name>
+    <url-pattern>/ValidateOtpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewPasswordServlet</display-name>
+    <servlet-name>NewPasswordServlet</servlet-name>
+    <servlet-class>pets.servlet.NewPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewPasswordServlet</servlet-name>
+    <url-pattern>/NewPasswordServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
