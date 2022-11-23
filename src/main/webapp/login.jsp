@@ -46,6 +46,15 @@
 			if(status == "failed"){
 				swal("Sorry", "Wrong Email or Password", "error");
 			}
+			if (status == "resetSuccess"){
+				swal("Success", "Password reset successfully", "success");
+			}
+			if (status == "regSuccess"){
+				swal("Success", "Account created successfully", "success");
+			}
+			if(status == "resetFailed"){
+				swal("Sorry", "Unable to reset password. Account not found.", "error");
+			}
 		
 		</script>
 		<!-- END Javascript Code -->
