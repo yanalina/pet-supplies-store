@@ -14,20 +14,18 @@
             <div class="regbox box">
           
                 <h1>Forgot your Password?</h1>
-                
-				
-				        <form action="ForgotPasswordServlet" method="post">
-                    <p>Email</p>
-					          <input type="text" placeholder="enter registered email" name="email" required>
+                <form action="ForgotPasswordServlet" method="post">
+                   <p>Email</p>
+		   <input type="text" placeholder="enter registered email" name="email" required>
        
 					
-                    <input type="submit" value="Send email">
-                  	<a href = "login.jsp">Go back to login</a><br>
-                    <a href="registration.jsp">Create New Account?</a>
+                  <input type="submit" value="Send email">
+                  <a href = "login.jsp">Go back to login</a><br>
+                  <a href="registration.jsp">Create New Account?</a>
               	</form>
               	 
-			</div>
-		</div>
+	     </div>
+	</div>
 		
 		
 		
