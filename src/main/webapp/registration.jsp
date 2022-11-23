@@ -12,6 +12,7 @@
 	</head>
 	
     <body>
+	<input type = "hidden" id = "status" value = "<%=request.getAttribute("status") %>">
         <div class="container">
             <div class="regbox box">
                 <img class = "avatar" src="login-img/cat.png">
@@ -46,6 +47,22 @@
                 </form>
 			</div>
 		</div>
+	    	
+	    	<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<link rel="stylesheet" href="alert/dist/sweetalert.css">
+		
+		<!-- Javascript Code for Error Message -->
+		<script type = "text/javascript">
+			var status = document.getElementById("status").value;
+			if(status == "regFailed"){
+				swal("Unable to Create Account", "Email entered is already registered", "error");
+			}
+		
+		</script>
+		<!-- END Javascript Code -->
+	    
 	</body>
 	
 </html>
