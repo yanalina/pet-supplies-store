@@ -19,21 +19,21 @@
                
                 <h1>Reset Password</h1>
 				
-			 	        <form action="NewPasswordServlet" method="post">
+		<form action="NewPasswordServlet" method="post">
                  
                     <p>Password</p>
-					          <input type="text" placeholder="password" name="password" required>
+		    <input type="text" placeholder="password" name="password" required>
                     
                     <p>Confirm Password</p>
-				 	          <input type="password" placeholder="confirm password" name="confPassword" required>
+		    <input type="password" placeholder="confirm password" name="confPassword" required>
 					
                     <input type="submit" value="Reset">
                     
                     
               	 </form>
               	 
-			</div>
-		</div>
+	     </div>
+	</div>
 		
 		
 	
