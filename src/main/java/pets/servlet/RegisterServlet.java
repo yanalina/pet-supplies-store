@@ -57,12 +57,16 @@ public class RegisterServlet extends HttpServlet {
 				e.printStackTrace();
 			}
             if (regUser.saveUser(userModel)) {
-                response.sendRedirect("login.jsp");
+                request.setAttribute("status", "regSuccess");
+            	RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            	rd.include(request,response);
             } else {
                 String errorMessage = "User Available";
                 HttpSession regSession = request.getSession();
                 regSession.setAttribute("RegError", errorMessage);
-                response.sendRedirect("registration.jsp");
+                request.setAttribute("status", "regFailed");
+            	RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
+            	rd.include(request,response);
             }
             
             out.println("</body>");
