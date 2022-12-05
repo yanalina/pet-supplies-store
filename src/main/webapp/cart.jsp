@@ -86,7 +86,7 @@ if (cart_list != null) {
                   Home
                 </a>
             </li>
-	    if (cart_list != null) {
+	    <%if (cart_list != null) {
 	    %>
 
 			<li class="nav-item"><a class="nav-link" href="cart.jsp">
