@@ -18,6 +18,8 @@ if (cart_list != null) {
 	cartProduct = pDao.getCartProducts(cart_list);
 	double total = pDao.getTotalPrice(cart_list);
 	request.setAttribute("total", total);
+	HttpSession mySession = request.getSession();//new
+	mySession.setAttribute("total-price", total);//new
 	request.setAttribute("cart_list", cart_list);
 }
 %>
@@ -72,7 +74,7 @@ if (cart_list != null) {
 	
 	 <nav class="navbar navbar-expand-sm bg-light">
 	    
-	   	<a class="navbar-brand" href="#"> <img
+	   	<a class="navbar-brand" href="index.jsp"> <img
 			src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30"
 			height="30" alt="">
 		</a>
@@ -84,11 +86,20 @@ if (cart_list != null) {
                   Home
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="cart.jsp">
-                  Cart<span class="badge badge-danger"> ${cart_list.size()}</span>
-                </a>
-            </li>
+	    if (cart_list != null) {
+	    %>
+
+			<li class="nav-item"><a class="nav-link" href="cart.jsp">
+					Cart<span class="badge badge-danger"> ${cart_list.size()}</span> <!-- NEW -->
+			</a></li>
+		<%
+		} else {
+		%>
+			<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart<span
+					class="badge badge-danger"></span></a></li>
+		<%
+		}
+		%>
             <%if (user != null){%>
 				
 				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet">Logout</a></li>
@@ -125,7 +136,7 @@ if (cart_list != null) {
 
 						<form action="#" method="post" class="form-inline">
 
-
+						<div class="incdec">
 							<p class="unit">
 								Quantity: <input type="hidden" name="id" value="1"
 									class="form-input"> <a class="btn bnt-sm btn-decre"
@@ -139,17 +150,38 @@ if (cart_list != null) {
 
 							</p>
 						</form>
+						</div>
+						<div class="remove-button">
 						<p class="btn-area">
 							<i aria-hidden="true" class="fa fa-trash"></i> <a class="btn2"
 								href="remove-from-cart?product_id=<%=c.getId()%>">Remove</a>
 						</p>
+						</div>
 					</div>
 				</div>
 				<%
 				}
 				}
-				%>
+				else{
+				%>				
+				<div class="card-body cart">
+					<div class="col-sm-12 empty-cart-cls text-center">
+						
+						
+						<h3>
+							<strong>Your Cart is Empty</strong>
+						</h3>
+						<div class = "cart-empty">
+							<a href="index.jsp" class="btn btn-primary ">continue shopping</a>
+							
+						</div>
 
+					</div>
+				</div>
+				<%
+				}
+				
+				%>
 
 			</div>
 
@@ -161,7 +193,19 @@ if (cart_list != null) {
 					<span>Total:</span> <span>$${ (total > 0) ?
 						decFormat.format(total) : 0}</span>
 				</p>
-				<a href="Checkout.jsp"><i class="fa fa-shopping-cart"></i>Checkout</a>
+								<%
+				if (cart_list != null && user != null && cart_list.size() != 0) {
+				%>
+				<a href="checkout.jsp" class="btn btn-success"><i
+					class="fa fa-shopping-cart"></i>Checkout</a>
+				<%
+				} else {
+				%>
+				<a href="cart.jsp" class="btn btn-success"><i
+					class="fa fa-shopping-cart"></i>Checkout</a>
+				<%
+				}
+				%>
 			</div>
 		</div>
 	</div>
