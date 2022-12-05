@@ -13,17 +13,12 @@ import java.util.ArrayList;
 
 import pets.model.Cart;
 
-/**
- * Servlet implementation class AddToCartServlet
- */
 
 @SuppressWarnings("unused")//for one of the imports
 public class AddToCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;chartset=UTF-8");
 		
@@ -52,7 +47,7 @@ public class AddToCartServlet extends HttpServlet {
 				for(Cart c:cart_list) {
 					if(c.getId() == id) {
 						exist = true;
-						out.println("<h3>product exists already<a href='cart.jsp'>go to cart</a></h3>");
+						response.sendRedirect("cart.jsp");
 					}
 				}
 				if(!exist) {
