@@ -193,18 +193,24 @@ if (cart_list != null) {
 					<span>Total:</span> <span>$${ (total > 0) ?
 						decFormat.format(total) : 0}</span>
 				</p>
-								<%
+								
+				<%
 				if (cart_list != null && user != null && cart_list.size() != 0) {
 				%>
 				<a href="checkout.jsp" class="btn btn-success"><i
 					class="fa fa-shopping-cart"></i>Checkout</a>
 				<%
-				} else {
-				%>
-				<a href="cart.jsp" class="btn btn-success"><i
+				} else{
+				if(user == null){%>
+				<a href="login.jsp" class="btn btn-success"><i
 					class="fa fa-shopping-cart"></i>Checkout</a>
 				<%
-				}
+				}else{
+					%>
+					<a href="cart.jsp" class="btn btn-success"><i
+					class="fa fa-shopping-cart"></i>Checkout</a>
+				<%}
+				} 
 				%>
 			</div>
 		</div>
