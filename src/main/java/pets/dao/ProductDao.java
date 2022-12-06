@@ -148,6 +148,29 @@ public class ProductDao {
 		}
 		return sum;
 	}
+		public Product getSingleProduct(int id) {
+		Product row = null;
+		try {
+			query = "select * from products where product_id=?";
+			pst = this.con.prepareStatement(query);
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				row = new Product();
+				row.setId(rs.getInt("product_id"));
+				row.setTitle(rs.getString("product_title"));
+				//row.setImage(rs.getString("product_image"));
+				row.setPrice(rs.getDouble("product_price"));
+				row.setCategory(rs.getString("product_category"));
+				
+				
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return row;
+	}
 }
 
 
