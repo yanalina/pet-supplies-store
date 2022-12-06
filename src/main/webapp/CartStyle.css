@@ -159,3 +159,11 @@ body {
 		max-width: 95%;
 	}
 }
+.cart-empty a{
+	background-color:  #76bfb6 !important;/*new code*/
+	font-size: 100;
+	font-weight:100;
+}
+.cart-empty a:hover {
+	background-color: #3972a7;
+}
