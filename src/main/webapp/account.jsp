@@ -1,10 +1,21 @@
 <%@page language = "java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
 <%@page import="pets.model.*"%>
+<%@page import="pets.dao.*"%>
+<%@page import="pets.connection.*"%>
+<%@page import="pets.servlet.*" %>
+<%@page import="java.util.*" %>
+<%@page import="java.text.DecimalFormat"%>
 
-<% User user = (User) request.getSession().getAttribute("logUser");
+<% 
+DecimalFormat dcf = new DecimalFormat("#.##");
+request.setAttribute("dcf", dcf);
+User user = (User) request.getSession().getAttribute("logUser");
+List<Order> orders = null;
 	if(user != null){
 		request.setAttribute("logUser", user);
+		OrderDao orderDao  = new OrderDao(DbCon.getConnection());
+		orders = orderDao.userHistory(user.getId());
 	}
 
 %>
@@ -49,7 +60,7 @@ if (cart_list != null) {
     
 		<nav class="navbar navbar-expand-sm bg-light">
 
-			<a class="navbar-brand" href="#"> <img
+			<a class="navbar-brand" href="index.jsp"> <img
 			src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30"
 			height="30" alt="">
 			</a>
@@ -58,10 +69,16 @@ if (cart_list != null) {
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="index.jsp">
 					Home </a></li>
-				<li class="nav-item"><a class="nav-link" href="cart.jsp">
+				<% if(cart_list != null){%>
+			
+					<li class="nav-item"><a class="nav-link" href="cart.jsp">
 					Cart<span class="badge badge-danger"> ${cart_list.size()}</span>
-					</a>
-				</li>
+					</a></li>
+				<%}
+				else{
+				%>
+					<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart<span class="badge badge-danger"></span></a></li> 
+			    	<%} %>
 				<%if (user != null){%>
 				
 				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet">Logout</a></li>
@@ -127,6 +144,7 @@ if (cart_list != null) {
   										<%=user.getPhone() %>
   									</div>
   								</div>
+								<hr>
   								<div class = "row">
   									<div class = "col-md-3">
   										<h5>Address</h5>
@@ -141,20 +159,44 @@ if (cart_list != null) {
   						<!-- -----------END of Personal Information Card---------- -->
   						
   						<!-- ----------------Order History Card----------------- -->
-  						<div class = "card mb-3 content">
-  							<h1 class = "m-3">Order History</h1>
-  							<div class = "card-body">
-  								<div class = "row">
-  									<div class = "col-md-3">
-  										<h5><a href = "#">Order Date</a></h5>
-  									</div>
-  									<div class = "col-md-9 text-secondary">
-  										Order No.
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-  						
+  			
+  				<div class="card mb-3 content">
+					<h1 class="m-3">Order History</h1>
+
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Date</th>
+									<th scope="col">Name</th>
+									<th scope="col">Product</th>
+									<th scope="col">Quantity</th>
+									<th scope="col">Price</th>
+								</tr>
+							</thead>
+							<tbody>
+
+							<%
+							if(orders != null){
+				
+								for(Order o:orders){
+				
+							%>
+							<tr>
+								<td><%=o.getDate() %></td>
+								<td><%=o.getName() %></td>
+								<td><%=o.getTitle() %></td>
+								<td><%=o.getProductQuantity() %></td>
+								<td><%=dcf.format(o.getPrice()) %></td>
+						
+						
+							</tr>
+							<%}
+							}
+							%>
+								</tbody>
+							</table>
+
+						</div>
   						<!-- ---------------END of Order History Card------------ -->
   						
   					</div>
