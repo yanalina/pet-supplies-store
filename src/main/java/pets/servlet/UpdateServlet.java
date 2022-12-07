@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,14 +15,9 @@ import pets.dao.UserDao;
 import pets.model.User;
 
 
-
-public class RegisterServlet extends HttpServlet {
-
-   
-    
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-
+       
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
             out.println("<body>");
             
             
+            
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String city = request.getParameter("city");
@@ -43,12 +40,20 @@ public class RegisterServlet extends HttpServlet {
             String phone = request.getParameter("phone");
             String password = request.getParameter("password");
            
-            User userModel = new User(name,address,city,zip,email, phone, password);
-
+            HttpSession mySession = request.getSession();
+            User user = (User)mySession.getAttribute("logUser");
+            user.setName(name);
+            user.setAddress(address);
+            user.setCity(city);
+            user.setZip(zip);
+            user.setEmail(email);
+            user.setPhone(phone);
+            user.setPassword(password);
             
-            UserDao regUser = null;
-			try {
-				regUser = new UserDao(DbCon.getConnection());
+            UserDao upUser = null;
+            
+            try {
+				upUser = new UserDao(DbCon.getConnection());
 			} catch (ClassNotFoundException e) {
 				
 				e.printStackTrace();
@@ -56,21 +61,21 @@ public class RegisterServlet extends HttpServlet {
 				
 				e.printStackTrace();
 			}
-            if (regUser.saveUser(userModel)) {
-                HttpSession regSession = request.getSession();
-            	regSession.setAttribute("email", email);
-            	regSession.setAttribute("name", name);
-            	
-                RequestDispatcher rd = request.getRequestDispatcher("WelcomeServlet");
+            
+            if(upUser.updateUser(user)) {
+            	request.setAttribute("status", "upSuccess");
+                RequestDispatcher rd = request.getRequestDispatcher("account.jsp");
                 rd.forward(request,response);
-            } else {
-                String errorMessage = "User Available";
-                HttpSession regSession = request.getSession();
-                regSession.setAttribute("RegError", errorMessage);
-                request.setAttribute("status", "regFailed");
-            	RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
-            	rd.include(request,response);
+                out.println("Updated to DB");
             }
+            else {
+            	request.setAttribute("status", "upFailed");
+            	RequestDispatcher rd = request.getRequestDispatcher("account.jsp");
+            	rd.forward(request, response);
+            	out.println("Not Updated");
+            	
+            }
+           
             
             out.println("</body>");
             out.println("</html>");
@@ -96,5 +101,6 @@ public class RegisterServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+
 
 }

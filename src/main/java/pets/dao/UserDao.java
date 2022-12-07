@@ -70,4 +70,30 @@ public class UserDao {
         }
         return usr;
     }
+
+public boolean updateUser(User user) {
+    	boolean set = false;
+    	
+    	try {
+    		
+    	String query = "update user set name = ?, address = ?, city = ?, zip = ?, email = ?, phone = ?, password = ? where id = ?";
+    	PreparedStatement s = this.con.prepareStatement(query);
+    	s.setString(1, user.getName());
+        s.setString(2, user.getAddress());
+        s.setString(3, user.getCity());
+        s.setString(4, user.getZip());
+        s.setString(5, user.getEmail());
+        s.setString(6, user.getPhone());
+        s.setString(7, user.getPassword());
+        s.setInt(8, user.getId());
+            
+        s.executeUpdate();
+        set = true;
+    		
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	 
+    	return set;
+    }
 }
