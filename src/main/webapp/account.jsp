@@ -57,7 +57,7 @@ if (cart_list != null) {
         <title>Account Page</title>
     </head>
     <body>
-    
+    	<input type = "hidden" id = "status" value = "<%=request.getAttribute("status") %>">
 		<nav class="navbar navbar-expand-sm bg-light">
 
 			<a class="navbar-brand" href="index.jsp"> <img
@@ -103,7 +103,7 @@ if (cart_list != null) {
   								<img src = "login-img/cat.png" class = "rounded-circle" width = "150">
   								<div class = "mt-3">
   									<h3>Welcome, <%= user.getName() %></h3>
-  									<h2><a href = "#">Edit Personal Info</a></h2>
+  									<h2><a href = "editAccount.jsp">Edit Personal Info</a></h2>
   									<h2><a href="LogoutServlet">Log Out</a></h2>
   								</div>
   							</div>
@@ -203,6 +203,24 @@ if (cart_list != null) {
   				</div>
   			</div>
   		</div> 
-        
+        	
+	    	<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<link rel="stylesheet" href="alert/dist/sweetalert.css">
+		
+		<!-- Javascript Code for Error Message -->
+		<script type = "text/javascript">
+			var status = document.getElementById("status").value;
+			if(status == "upSuccess"){
+				swal("Success", "Account has been updated successfully", "success");
+			}
+			if(status == "upFailed"){
+				swal("Sorry", "There has been an error with updating account.", "error");
+			}
+		
+		</script>
+		<!-- END Javascript Code -->
+	    
     </body>
 </html>
