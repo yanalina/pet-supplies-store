@@ -10,6 +10,8 @@ public class DbCon {
         if(connection == null){
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/petsupplies","root","test1989");
+		// Use this line instead if encounter timezone errors
+		// connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/petsupplies?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","test1989");
             System.out.print("Successfully connected!");
         }
         return connection;
