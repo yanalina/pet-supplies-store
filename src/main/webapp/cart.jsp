@@ -74,40 +74,38 @@ if (cart_list != null) {
 	
 	 <nav class="navbar navbar-expand-sm bg-light">
 	    
-	   	<a class="navbar-brand" href="index.jsp"> <img
-			src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30"
-			height="30" alt="">
-		</a>
+	   <a class="navbar-brand" href="index.jsp"> <img src="etc-imgs/pngcatdog.png" height="80" alt="cat and dog"></a>
 	    
   
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.jsp">
-                  Home
-                </a>
-            </li>
+           <li class="nav-item"><a class="nav-link" href="index.jsp"><img src= "etc-imgs/home icon.png" height="40"></a></li>
+               
+            
 	    <%if (cart_list != null) {
 	    %>
 
-			<li class="nav-item"><a class="nav-link" href="cart.jsp">
-					Cart<span class="badge badge-danger"> ${cart_list.size()}</span> <!-- NEW -->
+			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src= "etc-imgs/car icon.png" height ="40">
+			<span class="badge badge-danger"> ${cart_list.size()}</span> <!-- NEW -->
 			</a></li>
 		<%
 		} else {
 		%>
-			<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart<span
+			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src= "etc-imgs/car icon.png" height ="40"><span
 					class="badge badge-danger"></span></a></li>
 		<%
 		}
 		%>
             <%if (user != null){%>
 				
-				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet">Logout</a></li>
+				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet">
+				<img src= "etc-imgs/logout.png" height="40"></a></li>
 
-				<li class="nav-item"><a class="nav-link" href="account.jsp"> Account </a></li>
+				<li class="nav-item"><a class="nav-link" href="account.jsp"> 
+				<img src= "etc-imgs/login icon.png" height ="40"> </a></li>
 
 			<% }else{ %>
-				<li class="nav-item"><a class="nav-link" href="login.jsp"> Login </a></li>
+				<li class="nav-item"><a class="nav-link" href="login.jsp">
+				<img src= "etc-imgs/login icon.png" height ="40">  </a></li>
 			<%} %>
         </ul>
     </nav>
@@ -203,7 +201,7 @@ if (cart_list != null) {
 				} else{
 				if(user == null){%>
 				<a href="login.jsp" class="btn btn-success"><i
-					class="fa fa-shopping-cart"></i>Checkout</a>
+					class="fa fa-shopping-cart "></i>Checkout</a>
 				<%
 				}else{
 					%>
