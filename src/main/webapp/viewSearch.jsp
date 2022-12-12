@@ -72,14 +72,16 @@
 			<li class="nav-item"><a class="nav-link" href="index.jsp">
 			<img src= "etc-imgs/home icon.png" height="40"></a></li>
 			
-			<li class="nav-item"><a class="nav-link" href="cart.jsp">
-			<img src= "etc-imgs/car icon.png" height ="40"><span class="badge badge-danger"> ${cart_list.size()}</span>
+			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src="etc-imgs/car icon.png"  style="
+    width: 40px;
+    height: 40px;
+"><span class="badge badge-danger"> ${cart_list.size()}</span>
 			</a></li>
 			<%if (user != null){%>
 				
-				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet">Logout</a></li>
+				<li class = "nav-item"><a class = "nav-link" href = "LogoutServlet"><img src= "etc-imgs/logout.png" height="40"></a></li>
 
-				<li class="nav-item"><a class="nav-link" href="account.jsp"> Account </a></li>
+				<li class="nav-item"><a class="nav-link" href="account.jsp"> <img src= "etc-imgs/login icon.png" height ="40"></a></li>
 
 			<% }else{ %>
 				<li class="nav-item"><a class="nav-link" href="login.jsp">
