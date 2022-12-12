@@ -59,6 +59,7 @@
 
 <link rel="stylesheet" href="NavStyle.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">	
@@ -75,13 +76,26 @@
 			src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30"
 			height="30" alt="">
 		</a>
-
-
+		
+		<div class="search-container">
+			<form action="viewSearch.jsp">
+				<input type="text" placeholder="Search..." name="search"/>
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+		
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="index.jsp">
 					Home </a></li>
+			<% if(cart_list != null){%>
 			<li class="nav-item"><a class="nav-link" href="cart.jsp">
 					Cart<span class="badge badge-danger"> ${cart_list.size()}</span>
+			</a></li>
+			<%}else{
+				%>
+			<li class="nav-item"><a class="nav-link" href="cart.jsp">Cart<span class="badge badge-danger"></span></a></li> 
+			    <%} %>
+
 			</a></li>
 			<%if (user != null){%>
 				
@@ -114,8 +128,6 @@
 
 		<div class="row">
 		<aside class="col-lg-3">
-
-		<button class="btn btn-outline-secondary mb-3 w-100  d-lg-none" data-bs-toggle="collapse" data-bs-target="#aside_filter">Show filter</button>
 
 	<!-- ===== Card for the Sidebar Filter ===== -->
 	
@@ -229,29 +241,12 @@
     <!-- ========= END List of Products ========= -->
         
     <hr>
-
-
-	<!-- ========= Pagination ========= -->
-
-    <footer class="d-flex mt-4">
-      <div>
-        <a href="javascript: history.back()" class="btn btn-light"> &laquo; Go back</a>
-      </div>
-      <div class="ms-3">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <span class="page-link">2</span>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-    
-    <!-- ========= END Pagination ========= -->
+			
+	<footer class="d-flex mt-4">
+	      <div>
+		<a href="javascript: history.back()" class="btn btn-light"> &laquo; Go back</a>
+	      </div>
+	</footer>
 
     
 
