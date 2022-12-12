@@ -1,0 +1,165 @@
+header, footer{
+    height: 47px;
+}
+body{
+    margin: 0 0 0 0;
+}
+header{
+    background: rgb(123, 181, 201);
+}
+nav{
+    text-align: center;
+    padding-top: 3px;
+}
+nav a{
+    padding-left: 5%;
+    float: left;
+    text-decoration: none;
+}
+input{
+    text-align: center;
+    width: 40%;
+}
+
+h1{
+  
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-bottom: 50px;
+    text-align: center;
+    height: 20%;
+    margin-top:0%;
+    
+}
+.headerPic{
+    height:auto;
+    width:1000px;
+    padding-left: 30%;
+}
+
+h2{
+    text-align: center;
+    font-size: 40px;
+}
+
+.featured{
+    height: 150px;
+    width: 33.333%;
+    float: left;
+}
+.featured > img{
+    height: 150px;
+    float: left;
+}
+
+.featured ul > li{
+    margin: 0% 0% 0% 2%;
+    font-size: 20px;
+    font-weight: 700;
+    list-style-type: none;
+    float: left;
+    flex-wrap: wrap;
+}
+.featured li + li{
+    list-style-type: none;
+    font-weight: 400;
+    margin: 0% 0% 2% 2%;
+    float: left;
+}
+.featured li + li + li{
+    background: rgb(98, 146, 235);
+    padding: 1% 2% 1.5% 2%;
+    text-decoration: none; /*trying to get rid of underline*/
+    list-style-type: none;
+    font-weight: 400;
+}
+
+.filter{
+    width: 33.3333%;
+    float: left;
+}
+.filter li{
+    list-style-type: none;
+}
+h4{
+    padding-top: 150px;
+    padding-left: 40px;
+}
+span{
+    padding-left: 40px;
+}
+
+
+.subFeatured{
+    height: 100px;
+    width: 33.333%;
+    float: left;
+    padding-top: 170px;
+    padding-bottom: 50px;
+}
+.subFeatured > img{
+    height: 150px;
+    float: left;
+}
+
+.subFeatured ul > li{
+    margin: 0% 0% 0% 2%;
+    font-size: 20px;
+    font-weight: 700;
+    list-style-type: none;
+    float: left;
+}
+.subFeatured li + li{
+    list-style-type: none;
+    font-weight: 400;
+    margin: 0% 0% 2% 2%;
+    float: left;
+}
+.subFeatured li + li + li{
+    background: rgb(98, 146, 235);
+    padding: 1% 2% 1.5% 2%;
+    text-decoration: none; /*trying to get rid of underline*/
+    list-style-type: none;
+    font-weight: 400;
+}
+
+.subMain{
+    height: 100px;
+    width: 33.333%;
+    float: left;
+    padding-top: 1000px;
+}
+.subMain > img{
+    height: 150px;
+    float: left;
+}
+
+.subMain ul > li{
+    margin: 0% 0% 0% 2%;
+    font-size: 20px;
+    font-weight: 700;
+    list-style-type: none;
+    float: left;
+}
+.subMain li + li{
+    list-style-type: none;
+    font-weight: 400;
+    margin: 0% 0% 2% 2%;
+    float: left;
+}
+.subMain li + li + li{
+    background: rgb(98, 146, 235);
+    padding: 1% 2% 1.5% 2%;
+    text-decoration: none; /*trying to get rid of underline*/
+    list-style-type: none;
+    font-weight: 400;
+}
+
+
+footer{
+    background: rgb(0, 153, 255);
+    position: fixed;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+} 

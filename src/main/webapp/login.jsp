@@ -12,7 +12,7 @@
     	
     	<input type = "hidden" id = "status" value = "<%=request.getAttribute("status") %>">
     	
-    	<button><a href = "index.jsp">go back home</a></button>
+    	<a class="nav-link" href="index.jsp"><img src= "etc-imgs/home icon.png" height="80"></a>
     	
         <div class="container">
             <div class="regbox box">
