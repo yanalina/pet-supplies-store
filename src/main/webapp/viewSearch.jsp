@@ -57,10 +57,9 @@
 	<!-- Nav bar -->
 	<nav class="navbar navbar-expand-sm bg-light">
 
-		<a class="navbar-brand" href="#"> <img
-			src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30"
-			height="30" alt="">
-		</a>
+		<a class="navbar-brand" href="index.jsp"> 
+		<img src="etc-imgs/pngcatdog.png" 
+		height="80" alt="cat and dog"></a>
 
 		<div class="search-container">
 			<form action="viewSearch.jsp">
@@ -71,9 +70,10 @@
   
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="index.jsp">
-					Home </a></li>
+			<img src= "etc-imgs/home icon.png" height="40"></a></li>
+			
 			<li class="nav-item"><a class="nav-link" href="cart.jsp">
-					Cart<span class="badge badge-danger"> ${cart_list.size()}</span>
+			<img src= "etc-imgs/car icon.png" height ="40"><span class="badge badge-danger"> ${cart_list.size()}</span>
 			</a></li>
 			<%if (user != null){%>
 				
@@ -82,18 +82,30 @@
 				<li class="nav-item"><a class="nav-link" href="account.jsp"> Account </a></li>
 
 			<% }else{ %>
-				<li class="nav-item"><a class="nav-link" href="login.jsp"> Login </a></li>
+				<li class="nav-item"><a class="nav-link" href="login.jsp">
+				<img src= "etc-imgs/login icon.png" height ="40">  
+				</a>
+				</li>
 			<%} %>
 		</ul>
 	</nav>
 
 	<!-- Text at the Top of the Page -->
 	
-	<div class="jumbotron jumbotron-fluid">
-	  <div class="container text-center">
-	    <h1 class="display-4">Paws and Whiskers</h1>
-	    <p class="lead">Everything for your pet's needs. Browse and shop our latest products.</p>
-	  </div>
+	<div class="jumbotron p-0 jumbotron-fluid ">
+	
+	<img class="img-responsive img-fluid d-none d-lg-block" 
+	src="etc-imgs/Background for banner1.jpg">
+	
+	<img class="img-responsive img-fluid d-md-none" 
+	src="etc-imgs/bck4.jpg">
+	
+	<img class="img-responsive img-fluid d-none d-md-block d-lg-none" 
+	src="etc-imgs/bck3.jpg">
+	
+	<img class="img-responsive img-fluid d-none d-xs-block d-md-none" 
+	src="etc-imgs/bck4.jpg">
+	
 	</div>
 	
 	<hr>
