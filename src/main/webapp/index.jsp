@@ -86,14 +86,20 @@
 			<li class="nav-item"><a class="nav-link" href="index.jsp"><img src= "etc-imgs/home icon.png" height="40"></a></li>
 			<% if(cart_list != null){%>
 			
-			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src= "etc-imgs/car icon.png" height ="40">
+			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src="etc-imgs/car icon.png"  style="
+    width: 40px;
+    height: 40px;
+">
 				<span class="badge badge-danger"> ${cart_list.size()}</span>
 				
 			</a></li>
 			<%}else{
 				%>
 				
-			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src= "etc-imgs/car icon.png" height ="40">
+			<li class="nav-item"><a class="nav-link" href="cart.jsp"><img src="etc-imgs/car icon.png"  style="
+    width: 40px;
+    height: 40px;
+">
 			<span class="badge badge-danger"></span></a></li> 
 			    <%} %>
 
